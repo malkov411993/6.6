@@ -1,0 +1,15 @@
+{% extends 'flatpages/default.html' %}
+{% load custom_filters %}
+{% block title %}
+Пост
+{% endblock title %}
+{% block content %}
+<h1>{{ post.title | censor }}</h1>
+<p>{{ post.text | censor }}</p>
+<h6>
+    Дата публикации: {{ post.created_time | date:'d.m.Y' }}
+</h6>
+<div class="d-grid gap-2">
+    <a href="{% url 'post_edit' pk=post.pk %}" class="btn btn-outline-warning" role="button" data-bs-toggle="button">Редактировать</a>
+    <a href="{% url 'delete' pk=post.pk %}" class="btn btn-outline-danger" role="button" data-bs-toggle="button">Удалить</a>
+{% endblock content %}
